@@ -16,3 +16,14 @@
 
 上面是很多锁的名词，这些分类并不是全是指锁的状态，有的指锁的特性，有的指锁的设计
 
+####
+多线程笔试题：
+        空中网 几道线程笔试题   https://blog.csdn.net/kuyuyingzi/article/details/43562611
+                              https://blog.csdn.net/xcc_2269861428/article/details/79504893
+                              https://blog.csdn.net/Px01Ih8/article/details/82322035
+                              https://blog.csdn.net/njnu_zhoubo/article/details/4663866
+                              https://blog.csdn.net/chenshaohua12345/article/details/81297395
+                              https://blog.csdn.net/li930615/article/details/81168739
+读写锁问题
+    锁降级（写锁降级为读锁）
+    锁升级 （读锁升级为写锁）
