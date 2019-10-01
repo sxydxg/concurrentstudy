@@ -10,8 +10,9 @@ public class TestConcurrentHashMap {
 
     public static void main(String[] args) {
 
-
-
+        ConcurrentHashMap map = new ConcurrentHashMap();
+        map.put("key1","1");
+        System.out.println(16*0.75);
 
     }
 }

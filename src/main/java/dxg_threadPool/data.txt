@@ -1,0 +1,41 @@
+1.为什么要使用线程池？
+        创建线程和销毁线程的花销是比较大的，这些时间有可能比处理业务的时间还要长。
+        这样频繁的创建线程和销毁线程，再加上业务工作线程，消耗系统资源的时间，可能导致系统资源不足。
+        （我们可以把创建和销毁的线程的过程去掉）
+
+2.
+        <!-- 核心线程数 -->
+        <property name="corePoolSize" value="50"/>
+        <!-- 最大线程数 -->
+        <property name="maxPoolSize" value="500"/>
+        <!-- 队列最大长度 >=mainExecutor.maxSize -->
+        <property name="queueCapacity" value="10"/>
+        <!-- 线程池维护线程所允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="1"/>
+        <!-- 线程池对拒绝任务(无线程可用)的处理策略 如果已经超过了限制丢弃消息，不进行处理 -->
+        <property name="rejectedExecutionHandler">
+            <bean class="java.util.concurrent.ThreadPoolExecutor$DiscardPolicy"/>
+        </property>
+
+3.ThreadPoolExecutor对象就是线程池对象，Excecutors.newxxx()就是创建了这些对象
+
+总共是6种参数：
+int corePoolSize（不就是最小线程数嘛）
+int maximumPoolSize
+long keepAliveTime  TimeUnit unit  ---->允许空闲的时间，超时后线程会被销毁，直至线程数==corePoolSize
+BlockingQueue<Runnable> workQueue
+ThreadFactory threadFactory
+RejectedExecutionHandler handler
+
+一般是这样的：
+(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,
+             Executors.defaultThreadFactory(), defaultHandler)
+构造方法摘要
+ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue)
+          用给定的初始参数和默认的线程工厂及被拒绝的执行处理程序创建新的 ThreadPoolExecutor。
+ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, RejectedExecutionHandler handler)
+          用给定的初始参数和默认的线程工厂创建新的 ThreadPoolExecutor。
+ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory)
+          用给定的初始参数和默认被拒绝的执行处理程序创建新的 ThreadPoolExecutor。
+ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler)
+          用给定的初始参数创建新的 ThreadPoolExecutor。

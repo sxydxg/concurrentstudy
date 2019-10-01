@@ -46,7 +46,7 @@ public class ThreadQuit extends  Thread{
             } catch (InterruptedException e) {
                 // 发生异常会将isInterrupted重新设置为false（这非常操蛋），看api说明才知道
                 interrupt();             //加上这一句才成功（看我第二个例子）
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }
