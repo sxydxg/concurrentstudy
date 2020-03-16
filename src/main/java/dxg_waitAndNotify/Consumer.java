@@ -28,6 +28,11 @@ public class Consumer {
                 System.out.println("消费者————>消费了一个产品");
                 Producer.flag = false ;
                 lock.notify();           // 执行完syn区域会去唤醒其他线程
+                try {
+                    lock.wait();    // 这一句代码不加也是可以的
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
         }

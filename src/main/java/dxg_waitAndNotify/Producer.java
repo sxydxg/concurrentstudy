@@ -27,6 +27,11 @@ public class Producer {
                    System.out.println("生产者-->生产了一个产品");
                    flag = true ;
                    lock.notify();
+                   try {
+                       lock.wait(); // 这一句代码不加也是可以的
+                   } catch (InterruptedException e) {
+                       e.printStackTrace();
+                   }
                }
            }
 
