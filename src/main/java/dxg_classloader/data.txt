@@ -1,0 +1,16 @@
+
+ClassLoader的类上注解说如果要自定义类加载器可以采用如下策略，我们 只要仿照即可
+class NetworkClassLoader extends ClassLoader {
+           String host;
+           int port;
+
+           public Class findClass(String name) {
+               byte[] b = loadClassData(name);
+               return defineClass(name, b, 0, b.length);
+           }
+
+           private byte[] loadClassData(String name) {
+               // load the class data from the connection
+                . . .
+           }
+       }
