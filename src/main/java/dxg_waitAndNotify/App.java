@@ -11,6 +11,7 @@ public class App {
 
         new Thread(){
 
+            @Override
             public void run() {
                 new Producer("锁").create();
             }
@@ -18,6 +19,7 @@ public class App {
 
         new Thread(){
 
+            @Override
             public void run() {
                 new Consumer("锁").consume();
             }
